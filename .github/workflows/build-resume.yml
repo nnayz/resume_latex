@@ -1,4 +1,4 @@
-name: Build and Deploy Resume
+name: Build Resume
 
 on:
   push:
@@ -6,13 +6,7 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  contents: write
 
 jobs:
   build:
@@ -29,23 +23,15 @@ jobs:
         with:
           root_file: MyResume.tex
 
-      - name: Prepare Pages artifact
+      - name: Copy PDF to resume-viewer
         run: |
-          mkdir -p _site
-          mv MyResume.pdf _site/resume.pdf
+          mkdir -p resume-viewer/public
+          cp MyResume.pdf resume-viewer/public/resume.pdf
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    permissions:
-      pages: write
-      id-token: write
-    environment:
-      name: "github-pages"
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - name: Commit and push PDF
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add resume-viewer/public/resume.pdf
+          git diff --staged --quiet || git commit -m "chore: update compiled resume PDF"
+          git push
