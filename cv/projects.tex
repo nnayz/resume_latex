@@ -2,20 +2,53 @@
 \section{Projects}
     \vspace{2pt}
     \resumeSubHeadingListStart
-    
-    \resumeProjectHeading
+
+      \resumeProjectHeading
+          {{\textbf{\large{{Few-Shot Bioacoustic Classification}}} \space
+          \href{https://github.com/nnayz/uhh_project_dsai}{\faGithub}}
+          $|$ { Python, PyTorch Lightning, Prototypical Networks, Hydra, MLflow }}{}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Implemented prototypical networks for animal vocalization classification that adapts to new species from just a few labeled examples using episodic N-way, K-shot training paradigm}}
+
+            \resumeItem{\normalsize{Built end-to-end audio processing pipeline with offline feature extraction (STFT → Mel filterbank → Log/PCEN spectrograms) and online episodic training using PyTorch Lightning with configurable Hydra parameters and MLflow experiment tracking}}
+          \resumeItemListEnd
+          \vspace{2pt}
+
+      \resumeProjectHeading
+          {{\textbf{\large{{Federated Fine-Tuning of Nicheformer}}} \space
+          \href{https://github.com/nnayz/ft-nicheformer}{\faGithub}}
+          $|$ { Python, PyTorch, Federated Learning }}{}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Implemented federated learning framework for fine-tuning Nicheformer transformer model on mouse brain spatial transcriptomics data, comparing centralized (94.45\%), federated (92.76\%), and local training strategies}}
+
+            \resumeItem{\normalsize{Built data pipeline for anatomical non-IID partitioning (dorsal/mid/ventral regions) with 24-class cell type classification on 250-dimensional features (248 genes + spatial coordinates) achieving competitive 92.76\% accuracy in federated setting}}
+          \resumeItemListEnd
+          \vspace{2pt}
+
+      \resumeProjectHeading
           {{\textbf{\large{{GitGood}}} \space
-          \href{https://github.com/nnayz/GitGood}{\faGithub}} 
-          $|$ { Python, GitHub API, OAuth, Machine Learning, Web Development}}{}
+          \href{https://github.com/nnayz/gitgood}{\faGithub}} 
+          $|$ { Python, RAG, GitHub API, OpenAI API}}{}
           \resumeItemListStart
             \resumeItem{\normalsize{Built a comprehensive web application that integrates with GitHub via OAuth to analyze and visualize repository data, commit history, and code differences.}}
             \resumeItem{\normalsize{Integrated AI-powered chat assistant using custom RAG system to answer contextual questions about code changes and repository evolution.}}
           \resumeItemListEnd 
           \vspace{2pt}
+
+      \resumeProjectHeading
+          {{\textbf{\large{{ACL Anthology RAG}}} \space
+          \href{https://acla.nasrul.info}{\faLink}}
+          $|$ { Python, RAG, FastAPI, React, Qdrant, Langchain }}{}
+          \resumeItemListStart
+            \resumeItem{\normalsize{Built an intelligent research assistant that retrieves papers from 40,000+ ACL papers using dense vector embeddings and LLM-based query reformulation, enabling semantic understanding beyond keyword matching}}
+
+            \resumeItem{\normalsize{Designed and implemented end-to-end system with FastAPI backend (Python), React frontend, Qdrant vector database, and LangChain LLM integration with real-time streaming UI and inline citations}}
+          \resumeItemListEnd
+          \vspace{2pt}
           
-       \resumeProjectHeading
+      \resumeProjectHeading
           {{\textbf{\large{{MyTorch}}} \space
-          \href{https://github.com/nnayz/MyTorch}{\faGithub}} 
+          \href{https://github.com/nnayz/mytorch}{\faGithub}} 
           $|$ { Python, NumPy, Deep Learning, Neural Networks}}{}
           \resumeItemListStart
             \resumeItem{\normalsize{Developed a minimal deep learning library inspired by PyTorch, implementing fundamental neural network operations using only NumPy as the Python library dependency, building everything from scratch with fully connected linear layers for educational and prototyping purposes.}}
@@ -23,14 +56,14 @@
           \resumeItemListEnd 
            \vspace{2pt}
            
-       \resumeProjectHeading
-            {{\textbf{\large{{Momentum (WIP)}}}} 
+      \resumeProjectHeading
+            {{\textbf{\large{{Momentum}}}} 
            $|$ { Web Scraping, Content Analysis, Research Tools, Machine Learning, Python}}{}
            \resumeItemListStart
              \resumeItem{\normalsize{Developing a research assistant web application inspired by Anara Labs' Anara, designed to streamline academic and technical research workflows.}}
              \resumeItem{\normalsize{Building automated web content extraction and organization systems to gather, process, and categorize research materials from multiple online sources.}}
              \resumeItem{\normalsize{Implementing intelligent summarization algorithms to condense and present research findings in structured, actionable formats for enhanced productivity.}}
-           \resumeItemListEnd 
+           \resumeItemListEnd
          
     \resumeSubHeadingListEnd
 % \vspace{-12pt}

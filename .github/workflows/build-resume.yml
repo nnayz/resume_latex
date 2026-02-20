@@ -1,0 +1,38 @@
+name: Build and Release Resume
+
+on:
+  push:
+    branches: [main, master]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v3
+        with:
+          root_file: "My Resume.tex"
+          latexmk_use_xelatex: false
+
+      - name: Get current date
+        id: date
+        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: resume-${{ steps.date.outputs.date }}-${{ github.run_number }}
+          name: Resume ${{ steps.date.outputs.date }}
+          body: |
+            Automated resume build from commit ${{ github.sha }}
+            
+            📄 Download the PDF below.
+          files: "My Resume.pdf"
+          make_latest: true
