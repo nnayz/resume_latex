@@ -1,4 +1,4 @@
-name: Build and Release Resume
+name: Build and Deploy Resume
 
 on:
   push:
@@ -6,7 +6,13 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   build:
@@ -23,21 +29,23 @@ jobs:
         with:
           root_file: MyResume.tex
 
-      - name: Rename PDF back
-        run: mv MyResume.pdf "My Resume.pdf"
+      - name: Prepare Pages artifact
+        run: |
+          mkdir -p _site
+          mv MyResume.pdf _site/resume.pdf
 
-      - name: Get current date
-        id: date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_OUTPUT
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          tag_name: resume-${{ steps.date.outputs.date }}-${{ github.run_number }}
-          name: Resume ${{ steps.date.outputs.date }}
-          body: |
-            Automated resume build from commit ${{ github.sha }}
-            
-            📄 Download the PDF below.
-          files: "My Resume.pdf"
-          make_latest: true
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: "github-pages"
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
