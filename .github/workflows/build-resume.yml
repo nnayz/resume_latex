@@ -18,8 +18,7 @@ jobs:
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: "My Resume.tex"
-          latexmk_use_xelatex: false
+          root_file: My\ Resume.tex
 
       - name: Get current date
         id: date
