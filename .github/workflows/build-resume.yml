@@ -15,10 +15,16 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Rename file to remove space
+        run: mv "My Resume.tex" MyResume.tex
+
       - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v3
         with:
-          root_file: My\ Resume.tex
+          root_file: MyResume.tex
+
+      - name: Rename PDF back
+        run: mv MyResume.pdf "My Resume.pdf"
 
       - name: Get current date
         id: date
