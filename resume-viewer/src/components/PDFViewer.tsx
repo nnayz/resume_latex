@@ -1,4 +1,4 @@
-import { Root, Pages, Page, CanvasLayer, TextLayer } from "@anaralabs/lector";
+import { Root, Pages, Page, CanvasLayer, TextLayer, AnnotationLayer } from "@anaralabs/lector";
 
 interface PDFViewerProps {
   source: string;
@@ -20,6 +20,7 @@ export function PDFViewer({ source }: PDFViewerProps) {
         <Page>
           <CanvasLayer />
           <TextLayer />
+          <AnnotationLayer />
         </Page>
       </Pages>
     </Root>
