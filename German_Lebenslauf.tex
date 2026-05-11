@@ -1,0 +1,265 @@
+%% German Lebenslauf - Tech Industry Format
+%% Compiled with pdflatex
+
+\documentclass[a4paper,11pt]{article}
+
+% ============================================
+% PACKAGES
+% ============================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ngerman,english]{babel}
+\usepackage{lmodern}
+\usepackage[top=1.5cm, bottom=1.5cm, left=2cm, right=2cm]{geometry}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
+\usepackage[hidelinks]{hyperref}
+\usepackage{parskip}
+
+% ============================================
+% COLORS (Professional, subdued)
+% ============================================
+\definecolor{headingcolor}{HTML}{333333}
+\definecolor{rulecolor}{HTML}{666666}
+\definecolor{textgray}{HTML}{444444}
+
+% ============================================
+% SECTION FORMATTING
+% ============================================
+\titleformat{\section}
+  {\large\scshape\raggedright\color{headingcolor}}
+  {}{0em}{}[\color{rulecolor}\titlerule]
+\titlespacing*{\section}{0pt}{8pt}{4pt}
+
+% ============================================
+% CUSTOM COMMANDS
+% ============================================
+\newcommand{\cvitem}[1]{\item\small{#1}}
+
+\newcommand{\cvsubheading}[4]{
+  \vspace{2pt}
+  \begin{tabular*}{\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & #2 \\
+    \textit{\small #3} & \textit{\small #4} \\
+  \end{tabular*}\vspace{-4pt}
+}
+
+\newcommand{\cvproject}[2]{
+  \vspace{2pt}
+  \begin{tabular*}{\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
+    \textbf{#1} & \small{#2} \\
+  \end{tabular*}\vspace{-4pt}
+}
+
+\newenvironment{cvitemlist}
+  {\begin{itemize}[leftmargin=0.4cm, topsep=1pt, itemsep=0pt, parsep=0pt]}
+  {\end{itemize}}
+
+\newenvironment{cvsection}
+  {\begin{itemize}[leftmargin=0cm, label={}, topsep=0pt, itemsep=-2pt]}
+  {\end{itemize}}
+
+% ============================================
+% DOCUMENT
+% ============================================
+\begin{document}
+\pagestyle{empty}
+
+% ============================================
+% PERSONAL DETAILS
+% ============================================
+\begin{minipage}[t]{0.72\textwidth}
+  \vspace{0pt}
+  {\LARGE\textbf{Nasrul Huda}}\par
+  \vspace{4pt}
+  {\large AI Engineer / Data Scientist}\par
+  \vspace{10pt}
+  
+  \begin{tabular}{@{}ll@{}}
+    \textbf{Date of Birth:} & [DD.MM.YYYY] \\
+    \textbf{Place of Birth:} & [City, Country] \\
+    \textbf{Nationality:} & [Nationality] \\
+    \textbf{Address:} & Hamburg, Germany \\
+  \end{tabular}
+  
+  \vspace{8pt}
+  
+  \begin{tabular}{@{}ll@{}}
+    \faMobile* & \href{tel:+4915562060754}{+49 155 6206 0754} \\
+    \faEnvelope & \href{mailto:nasrul.huda.ds@gmail.com}{nasrul.huda.ds@gmail.com} \\
+    \faLinkedin & \href{https://www.linkedin.com/in/nasrul-hudaa/}{linkedin.com/in/nasrul-hudaa} \\
+    \faGithub & \href{https://github.com/nnayz}{github.com/nnayz} \\
+  \end{tabular}
+  
+  \vspace{6pt}
+  \textbf{Work Authorization:} Student Visa (working student eligible; full-time from [Oct 2026])
+  
+\end{minipage}%
+\hfill
+\begin{minipage}[t]{0.24\textwidth}
+  \vspace{0pt}
+  \raggedleft
+  % Photo placeholder - replace with actual photo
+  \fbox{%
+    \begin{minipage}[c][4.5cm][c]{3.5cm}
+      \centering
+      \small\textcolor{gray}{Photo\\(3.5 × 4.5 cm)}
+    \end{minipage}%
+  }
+\end{minipage}
+
+\vspace{4pt}
+\noindent\rule{\textwidth}{0.4pt}
+
+% ============================================
+% PROFESSIONAL EXPERIENCE
+% ============================================
+\section{Professional Experience}
+
+\begin{cvsection}
+  \item
+  \cvsubheading
+    {SynTwin GmbH}{Munich, Germany}
+    {AI Engineer (Working Student)}{October 2025 -- March 2026}
+  \begin{cvitemlist}
+    \cvitem{Developed agentic AI workflows and orchestration pipelines for a Digital Twin platform using Python and LiveKit.}
+    \cvitem{Implemented prompt engineering strategies improving agent reliability across complex multi-turn interactions.}
+    \cvitem{Built Vite React frontend components with Supabase for real-time data sync and authentication.}
+    \cvitem{\textbf{Tech:} Python, TypeScript, LiveKit, Supabase, Docker, Git, GitHub Actions}
+  \end{cvitemlist}
+
+  \item
+  \cvsubheading
+    {Universität Hamburg -- Security \& Distributed Systems}{Hamburg, Germany}
+    {Student Research Assistant}{July 2025 -- September 2025}
+  \begin{cvitemlist}
+    \cvitem{Built Python microservices for signing and verifying hash signatures for research data management.}
+    \cvitem{Contributed to NFDIxCS project (National Research Data Infrastructure for Computer Science).}
+    \cvitem{\textbf{Tech:} Python, Docker, Git, Linux, Cybersecurity, Distributed Systems}
+  \end{cvitemlist}
+
+  \item
+  \cvsubheading
+    {Pettoo UG}{Hamburg, Germany}
+    {Freelance Software Engineer}{June 2025 -- September 2025}
+  \begin{cvitemlist}
+    \cvitem{Developed backend for a pet services platform (booking, e-commerce, social features).}
+    \cvitem{Designed database architecture and core business logic using FastAPI and PostgreSQL.}
+    \cvitem{Led a team of 3 developers, ensuring consistent code quality across the project.}
+    \cvitem{Set up CI/CD pipelines (GitHub Actions) and deployed on Google Cloud Platform with Docker.}
+    \cvitem{\textbf{Tech:} FastAPI, PostgreSQL, GCP, Supabase, Docker, GitHub Actions, Elasticsearch}
+  \end{cvitemlist}
+
+  \item
+  \cvsubheading
+    {Universität Hamburg -- Language Technology Research Group}{Hamburg, Germany}
+    {Project Student Assistant}{February 2025 -- May 2025}
+  \begin{cvitemlist}
+    \cvitem{Contributed to DATS Project (Discourse Analysis Tool Suite), an NLP platform for automated text analysis.}
+    \cvitem{Developed full-stack components: React TypeScript frontend, FastAPI backend with RESTful APIs.}
+    \cvitem{Implemented NLP processing modules and text preprocessing pipelines for large-scale linguistic datasets.}
+    \cvitem{\textbf{Tech:} Python, FastAPI, React, TypeScript, NLP, Machine Learning, Docker, Git}
+  \end{cvitemlist}
+\end{cvsection}
+
+% ============================================
+% EDUCATION
+% ============================================
+\section{Education}
+
+\begin{cvsection}
+  \item
+  \cvsubheading
+    {Universität Hamburg}{Hamburg, Germany}
+    {Master of Science in Data Science and Artificial Intelligence}{October 2024 -- expected 2026}
+
+  \item
+  \cvsubheading
+    {Jamia Millia Islamia}{New Delhi, India}
+    {Bachelor of Technology in Computer Science Engineering}{October 2020 -- June 2024}
+\end{cvsection}
+
+% ============================================
+% PROJECTS
+% ============================================
+\section{Projects}
+
+\begin{cvsection}
+  \item
+  \cvproject
+    {Few-Shot Bioacoustic Classification \href{https://github.com/nnayz/prototypical-networks-bioacoustics}{\faGithub}}
+    {Python, PyTorch Lightning, Hydra, MLflow}
+  \begin{cvitemlist}
+    \cvitem{Implemented prototypical networks for animal vocalization classification using episodic N-way, K-shot training.}
+    \cvitem{Built audio pipeline with feature extraction (STFT, Mel, PCEN) and MLflow experiment tracking.}
+  \end{cvitemlist}
+
+  \item
+  \cvproject
+    {ACL Anthology RAG \href{https://acla.nasrul.info}{\faLink}}
+    {Python, FastAPI, React, Qdrant, LangChain}
+  \begin{cvitemlist}
+    \cvitem{Built research assistant retrieving from 40,000+ ACL papers using dense embeddings and LLM query reformulation.}
+    \cvitem{Full-stack system: FastAPI, React, Qdrant vector DB, LangChain with real-time streaming and citations.}
+  \end{cvitemlist}
+
+  \item
+  \cvproject
+    {GitGood \href{https://github.com/nnayz/gitgood}{\faGithub}}
+    {Python, RAG, GitHub API, OpenAI API}
+  \begin{cvitemlist}
+    \cvitem{Web app integrating with GitHub OAuth to analyze repository data, commits, and code diffs.}
+    \cvitem{AI chat assistant using custom RAG system for contextual questions about code changes.}
+  \end{cvitemlist}
+
+  \item
+  \cvproject
+    {MyTorch \href{https://github.com/nnayz/mytorch}{\faGithub}}
+    {Python, NumPy, Deep Learning}
+  \begin{cvitemlist}
+    \cvitem{Minimal deep learning library (PyTorch-inspired) with NumPy-only implementation of neural network operations.}
+    \cvitem{Core features: forward/backward propagation, gradient computation, and optimization algorithms.}
+  \end{cvitemlist}
+\end{cvsection}
+
+% ============================================
+% TECHNICAL SKILLS
+% ============================================
+\section{Technical Skills}
+
+\begin{tabular}{@{}p{3.2cm}p{13cm}@{}}
+  \textbf{Languages:} & Python, TypeScript, C++, SQL \\[2pt]
+  \textbf{Frameworks:} & PyTorch, PyTorch Lightning, Scikit-Learn, Pandas, FastAPI, React, LangChain, Docker, Git \\[2pt]
+  \textbf{Databases:} & PostgreSQL, Qdrant, Supabase, Redis, Elasticsearch \\[2pt]
+  \textbf{Cloud/DevOps:} & Google Cloud Platform, Docker, CI/CD, GitHub Actions, Linux \\[2pt]
+  \textbf{Courses:} & ML, NLP, Computer Vision, Neural Networks, Data Analytics, Signal Processing \\
+\end{tabular}
+
+% ============================================
+% LANGUAGES
+% ============================================
+\section{Languages}
+
+\noindent
+\textbf{English:} C1 (Advanced) \quad
+\textbf{Hindi:} Native \quad
+\textbf{Urdu:} Native \quad
+\textbf{German:} A2 (Elementary)
+
+% ============================================
+% AWARDS & ACHIEVEMENTS
+% ============================================
+\section{Awards \& Achievements}
+
+\begin{cvitemlist}
+  \cvitem{\textbf{Letter of Excellence} -- Vice Chancellor of Jamia Millia Islamia (outstanding academic performance).}
+  \cvitem{\textbf{IELTS 8.0 Band (C1)} -- R: 9.0, L: 8.0, W: 7.5, S: 7.0.}
+  \cvitem{\textbf{1st Rank} -- Top position in 4th year of Bachelor's program (2024).}
+\end{cvitemlist}
+
+\end{document}
