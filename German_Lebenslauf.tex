@@ -41,23 +41,25 @@
 % ============================================
 \newcommand{\cvitem}[1]{\item\small{#1}}
 
-\newcommand{\cvsubheading}[4]{
-  \vspace{2pt}
+\newcommand{\cvsubheading}[5][]{%
+  \vspace{2pt}%
+  \hbadness=10000%
   \begin{tabular*}{\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
-    \textbf{#1} & #2 \\
-    \textit{\small #3} & \textit{\small #4} \\
-  \end{tabular*}\vspace{-4pt}
+    \textbf{#2} & #3 \\
+    \textit{\small #4} & \textit{\small #5} \\
+  \end{tabular*}%
+  \ifx&#1&\else\vspace{2pt}\\{\small #1}\fi%
+  \vspace{-4pt}%
 }
 
 \newcommand{\cvproject}[2]{
   \vspace{2pt}
-  \begin{tabular*}{\textwidth}[t]{@{}l@{\extracolsep{\fill}}r@{}}
-    \textbf{#1} & \small{#2} \\
-  \end{tabular*}\vspace{-4pt}
+  \textbf{#1}\\
+  \small{#2}\vspace{-4pt}
 }
 
 \newenvironment{cvitemlist}
-  {\begin{itemize}[leftmargin=0.4cm, topsep=1pt, itemsep=0pt, parsep=0pt]}
+  {\begin{itemize}[leftmargin=0.4cm, topsep=1pt, itemsep=0pt, parsep=0pt, label=\textbullet]}
   {\end{itemize}}
 
 \newenvironment{cvsection}
@@ -77,14 +79,14 @@
   \vspace{0pt}
   {\LARGE\textbf{Nasrul Huda}}\par
   \vspace{4pt}
-  {\large AI Engineer / Data Scientist}\par
+  {\large Data Scientist}\par
   \vspace{10pt}
   
   \begin{tabular}{@{}ll@{}}
-    \textbf{Date of Birth:} & [DD.MM.YYYY] \\
-    \textbf{Place of Birth:} & [City, Country] \\
-    \textbf{Nationality:} & [Nationality] \\
-    \textbf{Address:} & Hamburg, Germany \\
+    \textbf{Date of Birth:} & 15.11.2001 \\
+    \textbf{Place of Birth:} & New Delhi, India \\
+    \textbf{Nationality:} & Indian \\
+    \textbf{Address:} & Bachstrasse 123, 22083, Hamburg, Germany \\
   \end{tabular}
   
   \vspace{8pt}
@@ -95,9 +97,6 @@
     \faLinkedin & \href{https://www.linkedin.com/in/nasrul-hudaa/}{linkedin.com/in/nasrul-hudaa} \\
     \faGithub & \href{https://github.com/nnayz}{github.com/nnayz} \\
   \end{tabular}
-  
-  \vspace{6pt}
-  \textbf{Work Authorization:} Student Visa (working student eligible; full-time from [Oct 2026])
   
 \end{minipage}%
 \hfill
@@ -117,6 +116,13 @@
 \noindent\rule{\textwidth}{0.4pt}
 
 % ============================================
+% ABOUT ME
+% ============================================
+\section{About Me}
+
+Data Science and AI student with hands-on experience in machine learning, full-stack development, and research. Passionate about building intelligent systems that solve real-world problems. Strong foundation in Python, modern web technologies, and cloud infrastructure. Seeking opportunities to apply AI/ML expertise in innovative projects.
+
+% ============================================
 % PROFESSIONAL EXPERIENCE
 % ============================================
 \section{Professional Experience}
@@ -125,22 +131,23 @@
   \item
   \cvsubheading
     {SynTwin GmbH}{Munich, Germany}
-    {AI Engineer (Working Student)}{October 2025 -- March 2026}
+    {AI Engineer (Working Student)}{October 2025 -- April 2026}
   \begin{cvitemlist}
-    \cvitem{Developed agentic AI workflows and orchestration pipelines for a Digital Twin platform using Python and LiveKit.}
-    \cvitem{Implemented prompt engineering strategies improving agent reliability across complex multi-turn interactions.}
-    \cvitem{Built Vite React frontend components with Supabase for real-time data sync and authentication.}
-    \cvitem{\textbf{Tech:} Python, TypeScript, LiveKit, Supabase, Docker, Git, GitHub Actions}
+    \cvitem{Developed agentic AI workflows and orchestration pipelines for a Digital Twin platform, designing multi-turn conversational agent architectures using Python and LiveKit.}
+    \cvitem{Applied prompt engineering strategies to improve agent reliability and consistency across complex, stateful interactions.}
+    \cvitem{Built and maintained React/Vite frontend components integrated with Supabase for real-time data sync and user authentication.}
+    \cvitem{Collaborated closely with the CTO and a team of 5 developers on end-to-end system design spanning AI agent architecture, backend services, and user-facing interfaces.}
+    \cvitem{\textbf{Tech:} LiveKit, Supabase, React, Docker Compose, STT, TTS, GitHub Actions}
   \end{cvitemlist}
 
   \item
   \cvsubheading
     {Universität Hamburg -- Security \& Distributed Systems}{Hamburg, Germany}
-    {Student Research Assistant}{July 2025 -- September 2025}
+    {Research Assistant}{July 2025 -- September 2025}
   \begin{cvitemlist}
-    \cvitem{Built Python microservices for signing and verifying hash signatures for research data management.}
-    \cvitem{Contributed to NFDIxCS project (National Research Data Infrastructure for Computer Science).}
-    \cvitem{\textbf{Tech:} Python, Docker, Git, Linux, Cybersecurity, Distributed Systems}
+    \cvitem{Built Python-based microservices for signing and verifying cryptographic hash signatures as part of research data management and security analysis tooling.}
+    \cvitem{Contributed to the NFDIxCS (National Research Data Infrastructure for Computer Science) project, working at the intersection of AI, data science, and distributed systems.}
+    \cvitem{\textbf{Tech:} Flask, ECDSA, RSA, Docker, GitLab CI, Linux, Cybersecurity, Distributed Systems}
   \end{cvitemlist}
 
   \item
@@ -148,23 +155,32 @@
     {Pettoo UG}{Hamburg, Germany}
     {Freelance Software Engineer}{June 2025 -- September 2025}
   \begin{cvitemlist}
-    \cvitem{Developed backend for a pet services platform (booking, e-commerce, social features).}
-    \cvitem{Designed database architecture and core business logic using FastAPI and PostgreSQL.}
-    \cvitem{Led a team of 3 developers, ensuring consistent code quality across the project.}
-    \cvitem{Set up CI/CD pipelines (GitHub Actions) and deployed on Google Cloud Platform with Docker.}
-    \cvitem{\textbf{Tech:} FastAPI, PostgreSQL, GCP, Supabase, Docker, GitHub Actions, Elasticsearch}
+    \cvitem{Designed and implemented the backend of a pet services platform enabling users to discover and book services, purchase products, and connect with other pet owners, using FastAPI and PostgreSQL.}
+    \cvitem{Architected the database schema and core business logic, and integrated Elasticsearch for search functionality.}
+    \cvitem{Led a team of 3 developers, coordinating tasks and maintaining consistent code quality across the project.}
+    \cvitem{Set up CI/CD pipelines with GitHub Actions and deployed containerised services on Google Cloud Platform.}
+    \cvitem{\textbf{Tech:} FastAPI, PostgreSQL, Google Cloud Platform, Docker, Elasticsearch, GitHub Actions}
   \end{cvitemlist}
 
   \item
   \cvsubheading
     {Universität Hamburg -- Language Technology Research Group}{Hamburg, Germany}
-    {Project Student Assistant}{February 2025 -- May 2025}
+    {Research Assistant}{February 2025--May 2025}
   \begin{cvitemlist}
     \cvitem{Contributed to DATS Project (Discourse Analysis Tool Suite), an NLP platform for automated text analysis.}
     \cvitem{Developed full-stack components: React TypeScript frontend, FastAPI backend with RESTful APIs.}
     \cvitem{Implemented NLP processing modules and text preprocessing pipelines for large-scale linguistic datasets.}
-    \cvitem{\textbf{Tech:} Python, FastAPI, React, TypeScript, NLP, Machine Learning, Docker, Git}
+    \cvitem{\textbf{Tech:} FastAPI, React, NLP, Machine Learning, Docker, Git}
   \end{cvitemlist}
+
+  \cvsubheading{Maseehum Task Manager}{New Delhi, India}{Software Developer}{April 2023--October 2023}
+  \begin{cvitemlist}
+    \cvitem{Developed and maintained REST APIs using FastAPI for order processing, validation, and transaction workflows, with database schema design and migrations on Supabase (PostgreSQL) for scalable data management.}
+    \cvitem{Built a Wix order synchronisation module for automated customer order fetching, integrated Zoho Books API for invoice generation and financial workflow automation, and WhatsApp API for automated notifications.}
+    \cvitem{Developed a real-time messaging system using WebSockets to improve system responsiveness and user interaction, and collaborated with the team to debug issues, optimise performance, and enhance system reliability.}
+    \cvitem{\textbf{Tech:} FastAPI, Supabase, PostgreSQL, WebSockets, Zoho Books API, WhatsApp API}
+  \end{cvitemlist}
+
 \end{cvsection}
 
 % ============================================
@@ -174,14 +190,24 @@
 
 \begin{cvsection}
   \item
-  \cvsubheading
+  \cvsubheading[Advanced study of machine learning, deep learning, statistical modelling, and AI systems, with emphasis on data-driven decision making, data privacy, natural language processing, computer vision, and large-scale data engineering.]
     {Universität Hamburg}{Hamburg, Germany}
-    {Master of Science in Data Science and Artificial Intelligence}{October 2024 -- expected 2026}
+    {M.Sc.\ in Data Science and Artificial Intelligence}{October 2024--March 2027}
 
   \item
-  \cvsubheading
+  \cvsubheading[Comprehensive study of computer science including algorithms, data structures, operating systems, database management, software engineering, computer networks, cryptography, computer architecture and object-oriented programming.]
     {Jamia Millia Islamia}{New Delhi, India}
-    {Bachelor of Technology in Computer Science Engineering}{October 2020 -- June 2024}
+    {B.Tech in Computer Science Engineering}{October 2020--June 2024}
+
+  \item
+  \cvsubheading[Field of Study: Physics, Chemistry, Mathematics, Computer Science]
+    {Laxman Public School}{New Delhi, India}
+    {Higher Secondary Education (CBSE)}{2020}
+
+  \item
+  \cvsubheading[Field of Study: Science]
+    {The Frank Anthony Public School}{New Delhi, India}
+    {Secondary Education (ICSE)}{2018}
 \end{cvsection}
 
 % ============================================
@@ -192,39 +218,57 @@
 \begin{cvsection}
   \item
   \cvproject
-    {Few-Shot Bioacoustic Classification \href{https://github.com/nnayz/prototypical-networks-bioacoustics}{\faGithub}}
-    {Python, PyTorch Lightning, Hydra, MLflow}
+    {Few-Shot Bioacoustic Sound Event Detection using Prototypical Networks \href{https://github.com/nnayz/prototypical-networks-bioacoustics}{\faGithub}}
+    {Torchaudio, PyTorch, PyTorch Lightning, Hydra, MLflow}
   \begin{cvitemlist}
-    \cvitem{Implemented prototypical networks for animal vocalization classification using episodic N-way, K-shot training.}
-    \cvitem{Built audio pipeline with feature extraction (STFT, Mel, PCEN) and MLflow experiment tracking.}
+    \cvitem{Developed a few-shot meta-learning system to classify animal vocalizations from as few as 5 labeled examples per species, using episodic (N-way, K-shot) training with Prototypical Networks.}
+    \cvitem{Engineered audio features from raw .wav files into 128-bin log-mel spectrograms and PCEN arrays using librosa, pre-computed and stored as .npy for efficient training.}
+    \cvitem{Designed and compared four encoder architectures: ResNet baseline (V1), ResNet with channel \& temporal attention + learnable distance metric (V2), Audio Spectrogram Transformer with multi-head self-attention (V3), and pretrained EfficientNet-B1 (V4).}
+    \cvitem{Built end-to-end training infrastructure with PyTorch Lightning, Hydra configuration management, MLflow experiment tracking, and a custom CLI for training, evaluation, and feature export.}
   \end{cvitemlist}
 
   \item
   \cvproject
-    {ACL Anthology RAG \href{https://acla.nasrul.info}{\faLink}}
-    {Python, FastAPI, React, Qdrant, LangChain}
+    {Federated Fine-Tuning of Nicheformer \href{https://github.com/nnayz/ft-nicheformer}{\faGithub}}
+    {PyTorch, Flower, Federated Learning}
   \begin{cvitemlist}
-    \cvitem{Built research assistant retrieving from 40,000+ ACL papers using dense embeddings and LLM query reformulation.}
-    \cvitem{Full-stack system: FastAPI, React, Qdrant vector DB, LangChain with real-time streaming and citations.}
+    \cvitem{Implemented federated learning framework for fine-tuning Nicheformer transformer model on mouse brain spatial transcriptomics data, comparing centralized (94.45\%), federated (92.76\%), and local training strategies.}
+    \cvitem{Built data pipeline for anatomical non-IID partitioning (dorsal/mid/ventral regions) with 24-class cell type classification on 250-dimensional features (248 genes + spatial coordinates) achieving competitive 92.76\% accuracy in federated setting.}
   \end{cvitemlist}
 
   \item
   \cvproject
-    {GitGood \href{https://github.com/nnayz/gitgood}{\faGithub}}
-    {Python, RAG, GitHub API, OpenAI API}
+    {ACL Anthology Semantic Retrieval System \href{https://github.com/nnayz/acl-anthology-rag}{\faGithub}}
+    {FastAPI, Langchain, React, Qdrant, Fireworks AI, Groq}
   \begin{cvitemlist}
-    \cvitem{Web app integrating with GitHub OAuth to analyze repository data, commits, and code diffs.}
-    \cvitem{AI chat assistant using custom RAG system for contextual questions about code changes.}
+    \cvitem{Built a Retrieval-Augmented Generation (RAG) system over the ACL Anthology corpus to enable semantic search across tens of thousands of NLP research papers, going beyond keyword matching to understand query meaning using dense vector embeddings.}
+    \cvitem{Implemented an offline ingestion pipeline that fetches paper metadata and abstracts, generates dense embeddings via Fireworks AI, and indexes them into a Qdrant vector store for fast approximate nearest-neighbour retrieval.}
+    \cvitem{Designed two query modes: natural language input (reformulated into multiple semantic queries by an LLM via Groq) and "Paper as Query" (using a paper's abstract as a semantic proxy to find related work); results aggregated using Reciprocal Rank Fusion (RRF).}
+    \cvitem{Developed a FastAPI backend and React frontend with real-time streaming responses, inline citations with hover previews, and a query monitoring panel showing pipeline steps and timing.}
   \end{cvitemlist}
 
   \item
   \cvproject
-    {MyTorch \href{https://github.com/nnayz/mytorch}{\faGithub}}
-    {Python, NumPy, Deep Learning}
+    {MyTorch: PyTorch-Inspired Deep Learning Framework \href{https://github.com/nnayz/mytorch}{\faGithub}}
+    {NumPy, Deep Learning}
   \begin{cvitemlist}
-    \cvitem{Minimal deep learning library (PyTorch-inspired) with NumPy-only implementation of neural network operations.}
-    \cvitem{Core features: forward/backward propagation, gradient computation, and optimization algorithms.}
+    \cvitem{Built a minimal deep learning library from scratch inspired by PyTorch's API, implementing core tensor operations (arithmetic, matrix multiplication, transpose) with a custom automatic differentiation engine and backward pass for gradient computation.}
+    \cvitem{Implemented neural network modules including fully connected (Linear) layers, ReLU activations, and Cross Entropy loss, all with manual forward and backward propagation with no ML framework dependencies.}
+    \cvitem{Developed SGD and Adam optimisers from first principles, replicating PyTorch's modular optimizer interface.}
+    \cvitem{Validated the framework on MNIST digit classification, achieving \textbf{97.16\% test accuracy} (macro F1: 97.15\%) using only linear layers, demonstrating correctness of the custom autograd and training pipeline.}
   \end{cvitemlist}
+  
+  \item
+  \cvproject
+    {GitGood: AI-Powered GitHub Repository Analysis Tool \href{https://github.com/nnayz/gitgood}{\faGithub}}
+    {FastAPI, React, Docker, OpenAI API}
+  \begin{cvitemlist}
+    \cvitem{Built a full-stack web application that integrates with GitHub OAuth to let users import repositories and interact with their codebase through an AI-powered chat interface.}
+    \cvitem{Designed a FastAPI backend with SQLAlchemy for user session management and repository data storage, connected to the OpenAI API to answer natural language questions about commit history, diffs, and code evolution.}
+    \cvitem{Developed a responsive React/TypeScript frontend with Vite and TailwindCSS, with Axios handling API communication between client and server.}
+    \cvitem{Containerised the full stack using Docker and Docker Compose for consistent local development and production deployment.}
+  \end{cvitemlist}
+
 \end{cvsection}
 
 % ============================================
@@ -233,11 +277,10 @@
 \section{Technical Skills}
 
 \begin{tabular}{@{}p{3.2cm}p{13cm}@{}}
-  \textbf{Languages:} & Python, TypeScript, C++, SQL \\[2pt]
+  \textbf{Languages:} & Python, TypeScript, C++, SQL, Rust(Novice) \\[2pt]
   \textbf{Frameworks:} & PyTorch, PyTorch Lightning, Scikit-Learn, Pandas, FastAPI, React, LangChain, Docker, Git \\[2pt]
   \textbf{Databases:} & PostgreSQL, Qdrant, Supabase, Redis, Elasticsearch \\[2pt]
-  \textbf{Cloud/DevOps:} & Google Cloud Platform, Docker, CI/CD, GitHub Actions, Linux \\[2pt]
-  \textbf{Courses:} & ML, NLP, Computer Vision, Neural Networks, Data Analytics, Signal Processing \\
+  \textbf{Cloud/DevOps:} & Google Cloud Platform, Docker, CI/CD, GitHub Actions \\[2pt]
 \end{tabular}
 
 % ============================================
@@ -260,6 +303,7 @@
   \cvitem{\textbf{Letter of Excellence} -- Vice Chancellor of Jamia Millia Islamia (outstanding academic performance).}
   \cvitem{\textbf{IELTS 8.0 Band (C1)} -- R: 9.0, L: 8.0, W: 7.5, S: 7.0.}
   \cvitem{\textbf{1st Rank} -- Top position in 4th year of Bachelor's program (2024).}
+  \cvitem{\textbf{Certificate of Excellence} -- Coding Ninjas (Data Structures and Algorithms).}
 \end{cvitemlist}
 
 \end{document}

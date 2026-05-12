@@ -4,13 +4,14 @@
     \resumeSubHeadingListStart
 
       \resumeProjectHeading
-          {{\textbf{\large{{Few-Shot Bioacoustic Classification}}} \space
+          {{\textbf{\large{{Few-Shot Bioacoustic Sound Event Detection}}} \space
           \href{https://github.com/nnayz/prototypical-networks-bioacoustics}{\faGithub}}
-          $|$ { Python, PyTorch Lightning, Prototypical Networks, Hydra, MLflow }}{}
+          $|$ { Torchaudio, PyTorch, PyTorch Lightning, Hydra, MLflow }}{}
           \resumeItemListStart
-            \resumeItem{\normalsize{Implemented prototypical networks for animal vocalization classification that adapts to new species from just a few labeled examples using episodic N-way, K-shot training paradigm}}
-
-            \resumeItem{\normalsize{Built end-to-end audio processing pipeline with offline feature extraction (STFT → Mel filterbank → Log/PCEN spectrograms) and online episodic training using PyTorch Lightning with configurable Hydra parameters and MLflow experiment tracking}}
+            \resumeItem{\normalsize{Developed a few-shot meta-learning system to classify animal vocalizations from as few as 5 labeled examples per species, using episodic (N-way, K-shot) training with Prototypical Networks.}}
+            \resumeItem{\normalsize{Engineered audio features from raw .wav files into 128-bin log-mel spectrograms and PCEN arrays using librosa, pre-computed and stored as .npy for efficient training.}}
+            \resumeItem{\normalsize{Designed and compared four encoder architectures: ResNet baseline (V1), ResNet with channel \& temporal attention + learnable distance metric (V2), Audio Spectrogram Transformer with multi-head self-attention (V3), and pretrained EfficientNet-B1 (V4).}}
+            \resumeItem{\normalsize{Built end-to-end training infrastructure with PyTorch Lightning, Hydra configuration management, MLflow experiment tracking, and a custom CLI for training, evaluation, and feature export.}}
           \resumeItemListEnd
           \vspace{2pt}
 
@@ -26,33 +27,38 @@
           \vspace{2pt}
 
       \resumeProjectHeading
-          {{\textbf{\large{{GitGood}}} \space
+          {{\textbf{\large{{GitGood: AI-Powered GitHub Repository Analysis Tool}}} \space
           \href{https://github.com/nnayz/gitgood}{\faGithub}}
-          $|$ { Python, RAG, GitHub API, OpenAI API}}{}
+          $|$ { FastAPI, React, Docker, OpenAI API}}{}
           \resumeItemListStart
-            \resumeItem{\normalsize{Built a comprehensive web application that integrates with GitHub via OAuth to analyze and visualize repository data, commit history, and code differences.}}
-            \resumeItem{\normalsize{Integrated AI-powered chat assistant using custom RAG system to answer contextual questions about code changes and repository evolution.}}
+            \resumeItem{\normalsize{Built a full-stack web application that integrates with GitHub OAuth to let users import repositories and interact with their codebase through an AI-powered chat interface.}}
+            \resumeItem{\normalsize{Designed a FastAPI backend with SQLAlchemy for user session management and repository data storage, connected to the OpenAI API to answer natural language questions about commit history, diffs, and code evolution.}}
+            \resumeItem{\normalsize{Developed a responsive React/TypeScript frontend with Vite and TailwindCSS, with Axios handling API communication between client and server.}}
+            \resumeItem{\normalsize{Containerised the full stack using Docker and Docker Compose for consistent local development and production deployment.}}
           \resumeItemListEnd
           \vspace{2pt}
 
       \resumeProjectHeading
-          {{\textbf{\large{{ACL Anthology RAG}}} \space
-          \href{https://acla.nasrul.info}{\faLink}}
-          $|$ { Python, RAG, FastAPI, React, Qdrant, Langchain }}{}
+          {{\textbf{\large{{ACL Anthology Semantic Retrieval System}}} \space
+          \href{https://github.com/nnayz/acl-anthology-rag}{\faGithub}}
+          $|$ { FastAPI, Langchain, React, Qdrant, Fireworks AI, Groq }}{}
           \resumeItemListStart
-            \resumeItem{\normalsize{Built an intelligent research assistant that retrieves papers from 40,000+ ACL papers using dense vector embeddings and LLM-based query reformulation, enabling semantic understanding beyond keyword matching}}
-
-            \resumeItem{\normalsize{Designed and implemented end-to-end system with FastAPI backend (Python), React frontend, Qdrant vector database, and LangChain LLM integration with real-time streaming UI and inline citations}}
+            \resumeItem{\normalsize{Built a Retrieval-Augmented Generation (RAG) system over the ACL Anthology corpus to enable semantic search across tens of thousands of NLP research papers, going beyond keyword matching to understand query meaning using dense vector embeddings.}}
+            \resumeItem{\normalsize{Implemented an offline ingestion pipeline that fetches paper metadata and abstracts, generates dense embeddings via Fireworks AI, and indexes them into a Qdrant vector store for fast approximate nearest-neighbour retrieval.}}
+            \resumeItem{\normalsize{Designed two query modes: natural language input (reformulated into multiple semantic queries by an LLM via Groq) and "Paper as Query" (using a paper's abstract as a semantic proxy to find related work); results aggregated using Reciprocal Rank Fusion (RRF).}}
+            \resumeItem{\normalsize{Developed a FastAPI backend and React frontend with real-time streaming responses, inline citations with hover previews, and a query monitoring panel showing pipeline steps and timing.}}
           \resumeItemListEnd
           \vspace{2pt}
 
       \resumeProjectHeading
-          {{\textbf{\large{{MyTorch}}} \space
+          {{\textbf{\large{{MyTorch: PyTorch-Inspired Deep Learning Framework}}} \space
           \href{https://github.com/nnayz/mytorch}{\faGithub}}
-          $|$ { Python, NumPy, Deep Learning, Neural Networks}}{}
+          $|$ { NumPy, Deep Learning}}{}
           \resumeItemListStart
-            \resumeItem{\normalsize{Developed a minimal deep learning library inspired by PyTorch, implementing fundamental neural network operations using only NumPy as the Python library dependency, building everything from scratch with fully connected linear layers for educational and prototyping purposes.}}
-            \resumeItem{\normalsize{Built core functionalities including forward and backward propagation, gradient computation, and optimization algorithms to facilitate understanding of deep learning fundamentals.}}
+            \resumeItem{\normalsize{Built a minimal deep learning library from scratch inspired by PyTorch's API, implementing core tensor operations (arithmetic, matrix multiplication, transpose) with a custom automatic differentiation engine and backward pass for gradient computation.}}
+            \resumeItem{\normalsize{Implemented neural network modules including fully connected (Linear) layers, ReLU activations, and Cross Entropy loss, all with manual forward and backward propagation with no ML framework dependencies.}}
+            \resumeItem{\normalsize{Developed SGD and Adam optimisers from first principles, replicating PyTorch's modular optimizer interface.}}
+            \resumeItem{\normalsize{Validated the framework on MNIST digit classification, achieving \textbf{97.16\% test accuracy} (macro F1: 97.15\%) using only linear layers, demonstrating correctness of the custom autograd and training pipeline.}}
           \resumeItemListEnd
            \vspace{2pt}
 

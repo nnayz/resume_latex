@@ -16,15 +16,15 @@ const LEBENSLAUF_URL = import.meta.env.VITE_LEBENSLAUF_URL || "/lebenslauf.pdf";
 function App() {
   const [isEuropass, setIsEuropass] = useState(() => {
     const params = new URLSearchParams(window.location.search);
-    return params.get("lang") !== "en";
+    return params.get("lang") === "de";
   });
 
   useEffect(() => {
     const url = new URL(window.location.href);
     if (isEuropass) {
-      url.searchParams.delete("lang");
+      url.searchParams.set("lang", "de");
     } else {
-      url.searchParams.set("lang", "en");
+      url.searchParams.delete("lang");
     }
     window.history.replaceState(null, "", url.toString());
   }, [isEuropass]);
